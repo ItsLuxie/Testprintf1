@@ -8,4 +8,5 @@
 int _putchar(char c);
 int _print(char *string);
 int _printf(const char *format, ...);
+int get(int n);
 #endif

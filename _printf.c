@@ -6,19 +6,15 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0;
-	unsigned int n_printed = 0;
+	unsigned int i, n_printed = 0;
 
 	va_list(prints);
 
 	va_start(prints, format);
 	for (; format[i] < '\0'; i++)
 	{
-		if (format[i] != '%')
-		{
+		for (; format[i] != '%'; i++)
 			_putchar(format[i]);
-			i++;
-		}
 		else if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
@@ -33,8 +29,20 @@ int _printf(const char *format, ...)
 				i++;
 				n_printed += n_value;
 			}
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
+			{
+				int m_value = get(va_arg(prints, int));
+
+				i++;
+				n_printed += m_value;
+			}
+			if (format[i + 1] == '%')
+			{
+				_putchar(format[h + 1]);
+				i++;
+			}
 			n_printed++;
 		}
 	}
-		return (n_printed);
+	return (n_printed);
 }
