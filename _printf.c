@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 	for (; format[i] < '\0'; i++)
 	{
 		for (; format[i] != '%'; i++)
-			int val = _putchar(format[i]);
+			_putchar(format[i]);
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')
