@@ -1,4 +1,6 @@
 #include "main.h"
+int _printf(const char *format, ...);
+int _puts(char *string);
 /**
  * _printf - same as printf
  * @format: string pointer
@@ -6,42 +8,68 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, n_printed = 0;
+	int i = 0, sum = 0;
 
-	va_list(prints);
+	va_list args;
 
-	va_start(prints, format);
-	if (format == 0)
-		return (-1);
-	for (; format[i] < '\0'; i++)
+	va_start(args, format);
+	if (format[i] == '0')
 	{
-		for (; format[i] != '%'; i++)
-			_putchar(format[i]);
-		if (format[i] == '%')
-		{
-			if (format[i + 1] == 'c')
-			{
-				_putchar(va_arg(prints, int));
-				i++;
-			}
-			if (format[i + 1] == 's')
-			{
-				int n_value = _print(va_arg(prints, char *));
-
-				i++;
-				n_printed += n_value;
-			}
-			if (format[i + 1] == 'd' || format[i + 1] == 'i')
-			{
-				int m_value = get(va_arg(prints, int));
-
-				i++;
-				n_printed += m_value;
-			}
-			for (; format[i + 1] == '%'; i++)
-				_putchar(format[i + 1]);
-		}
-		n_printed += 1;
+		return (-1);
 	}
-	return (n_printed);
+	else
+	{
+		while (format[i])
+		{
+			if (format[i] == '%')
+			{
+				i++;
+				if (format[i] == 'c')
+				{
+					_putchar(va_arg(args, int));
+
+					sum++;
+				}
+				else if (format[i] == 's')
+				{
+					int sum1 = _puts(va_arg(args, char*));
+
+					sum += sum1;
+				}
+				else if (format[i + 1] == '%')
+				{
+					return (write(1, "%%", 1));
+				}
+			}
+			else
+			{
+				_putchar(format[i]);
+				sum++;
+			}
+			i++;
+		}
+	}
+	return (sum);
+}
+/**
+ * _puts - puts
+ * @string: string
+ * Return: r_val
+ */
+int _puts(char *string)
+{
+	int r_v = 0;
+	int id = 0;
+
+	if (string)
+	{
+		while (string[id] != '\0')
+		{
+			_putchar(string[id]);
+			r_v += 1;
+			id++;
+		}
+		return (r_v);
+	}
+	return (r_v);
 }

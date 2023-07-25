@@ -1,8 +1,8 @@
-#include "main.h"
+#include  "main.h"
 /**
- * _putchar - function such as putchar
- * @c: character
- * Return: void
+ * _putchar - putchar
+ * @c: characyer
+ * Return: 0
  */
 int _putchar(char c)
 {
