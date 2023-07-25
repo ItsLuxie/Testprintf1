@@ -11,10 +11,16 @@ int _printf(const char *format, ...)
 	va_list(prints);
 
 	va_start(prints, format);
+	if (format == 0)
+		return (-1);
 	for (; format[i] < '\0'; i++)
 	{
 		for (; format[i] != '%'; i++)
-			_putchar(format[i]);
+		{
+			int val = _putchar(format[i]);
+
+			n_printed += val;
+		}
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == 'c')

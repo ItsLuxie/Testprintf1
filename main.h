@@ -1,8 +1,11 @@
 #ifndef HEADFILE_H
 #define HEADFILE_H
 
-#include <stdarg.h>
-#include <unistd.h>
+#ifndef STDARG_H
+#define STDARG_H
+
+#ifndef UNISTD_H
+#define UNISTD_H
 
 /** my prototypes */
 int _putchar(char c);
