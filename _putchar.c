@@ -1,4 +1,4 @@
-#include "headfile.h"
+#include "main.h"
 /**
  * _putchar - function such as putchar
  * @c: character

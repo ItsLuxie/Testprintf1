@@ -1,4 +1,4 @@
-#include "headfile.h"
+#include "main.h"
 /**
  * _print - prints string
  * @string: string
