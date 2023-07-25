@@ -36,9 +36,9 @@ int _printf(const char *format, ...)
 
 					sum += sum1;
 				}
-				else if (format[i + 1] == '%')
+				else if (format[i] == '%')
 				{
-					return (write(1, "%%", 1));
+					_putchar('%');
 				}
 			}
 			else
