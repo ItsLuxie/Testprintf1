@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 				{
 					int sum1 = _puts(va_arg(args, char*));
 
+					i++;
 					sum += sum1;
 				}
 				else if (format[i] == '%')
@@ -66,7 +67,7 @@ int _puts(char *string)
 	{
 		while (string[id] != '\0')
 		{
-			write(1, string, strlen(string));
+			_putchar(string[id]);
 			r_v += 1;
 			id++;
 		}
